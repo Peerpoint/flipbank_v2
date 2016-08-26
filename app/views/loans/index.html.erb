@@ -1,0 +1,119 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Loans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Trans type</th>
+      <th>Gross loan</th>
+      <th>Loan term</th>
+      <th>Closing date</th>
+      <th>Rehab</th>
+      <th>Rehab funds</th>
+      <th>Coll address</th>
+      <th>Prop type</th>
+      <th>Occupy</th>
+      <th>Contract exp</th>
+      <th>Seller con</th>
+      <th>Salesprice</th>
+      <th>As is val</th>
+      <th>Arv</th>
+      <th>Ltc</th>
+      <th>Ltv as</th>
+      <th>Ltv eff</th>
+      <th>Purch date</th>
+      <th>Verif improv</th>
+      <th>Payoff</th>
+      <th>Lender name</th>
+      <th>Purch price</th>
+      <th>Appraised val</th>
+      <th>Borrower</th>
+      <th>Fname</th>
+      <th>Lname</th>
+      <th>Hemail</th>
+      <th>Hphone</th>
+      <th>Home add</th>
+      <th>Citizen</th>
+      <th>Credit score</th>
+      <th>Bk</th>
+      <th>Sixty days</th>
+      <th>Foreclosure</th>
+      <th>Last fc ss</th>
+      <th>Entity</th>
+      <th>Bizname</th>
+      <th>Bizadd</th>
+      <th>Bizemail</th>
+      <th>Bizphone</th>
+      <th>Purchsixmo</th>
+      <th>Purchtwelvemo</th>
+      <th>Purchlife</th>
+      <th>Avg price</th>
+      <th>Dob</th>
+      <th>Ssn</th>
+      <th>Ein</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loans.each do |loan| %>
+      <tr>
+        <td><%= loan.trans_type %></td>
+        <td><%= loan.gross_loan %></td>
+        <td><%= loan.loan_term %></td>
+        <td><%= loan.closing_date %></td>
+        <td><%= loan.rehab %></td>
+        <td><%= loan.rehab_funds %></td>
+        <td><%= loan.coll_address %></td>
+        <td><%= loan.prop_type %></td>
+        <td><%= loan.occupy %></td>
+        <td><%= loan.contract_exp %></td>
+        <td><%= loan.seller_con %></td>
+        <td><%= loan.salesprice %></td>
+        <td><%= loan.as_is_val %></td>
+        <td><%= loan.arv %></td>
+        <td><%= loan.ltc %></td>
+        <td><%= loan.ltv_as %></td>
+        <td><%= loan.ltv_eff %></td>
+        <td><%= loan.purch_date %></td>
+        <td><%= loan.verif_improv %></td>
+        <td><%= loan.payoff %></td>
+        <td><%= loan.lender_name %></td>
+        <td><%= loan.purch_price %></td>
+        <td><%= loan.appraised_val %></td>
+        <td><%= loan.borrower %></td>
+        <td><%= loan.fname %></td>
+        <td><%= loan.lname %></td>
+        <td><%= loan.hemail %></td>
+        <td><%= loan.hphone %></td>
+        <td><%= loan.home_add %></td>
+        <td><%= loan.citizen %></td>
+        <td><%= loan.credit_score %></td>
+        <td><%= loan.bk %></td>
+        <td><%= loan.sixty_days %></td>
+        <td><%= loan.foreclosure %></td>
+        <td><%= loan.last_fc_ss %></td>
+        <td><%= loan.entity %></td>
+        <td><%= loan.bizname %></td>
+        <td><%= loan.bizadd %></td>
+        <td><%= loan.bizemail %></td>
+        <td><%= loan.bizphone %></td>
+        <td><%= loan.purchsixmo %></td>
+        <td><%= loan.purchtwelvemo %></td>
+        <td><%= loan.purchlife %></td>
+        <td><%= loan.avg_price %></td>
+        <td><%= loan.dob %></td>
+        <td><%= loan.ssn %></td>
+        <td><%= loan.ein %></td>
+        <td><%= link_to 'Show', loan %></td>
+        <td><%= link_to 'Edit', edit_loan_path(loan) %></td>
+        <td><%= link_to 'Destroy', loan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Loan', new_loan_path %>

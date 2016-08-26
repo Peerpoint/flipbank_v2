@@ -1,0 +1,205 @@
+<%= simple_form_for(@loan, html: {multipart: true}) do |f| %>
+  <% if @loan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@loan.errors.count, "error") %> prohibited this loan from being saved:</h2>
+
+      <ul>
+      <% @loan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :trans_type %><br>
+    <%= f.text_field :trans_type %>
+  </div>
+  <div class="field">
+    <%= f.label :gross_loan %><br>
+    <%= f.text_field :gross_loan %>
+  </div>
+  <div class="field">
+    <%= f.label :loan_term %><br>
+    <%= f.text_field :loan_term %>
+  </div>
+  <div class="field">
+    <%= f.label :closing_date %><br>
+    <%= f.date_select :closing_date %>
+  </div>
+  <div class="field">
+    <%= f.label :rehab %><br>
+    <%= f.check_box :rehab %>
+  </div>
+  <div class="field">
+    <%= f.label :rehab_funds %><br>
+    <%= f.text_field :rehab_funds %>
+  </div>
+  <div class="field">
+    <%= f.label :coll_address %><br>
+    <%= f.text_field :coll_address %>
+  </div>
+  <div class="field">
+    <%= f.label :prop_type %><br>
+    <%= f.text_field :prop_type %>
+  </div>
+  <div class="field">
+    <%= f.label :occupy %><br>
+    <%= f.check_box :occupy %>
+  </div>
+  <div class="field">
+    <%= f.label :contract_exp %><br>
+    <%= f.date_select :contract_exp %>
+  </div>
+  <div class="field">
+    <%= f.label :seller_con %><br>
+    <%= f.text_field :seller_con %>
+  </div>
+  <div class="field">
+    <%= f.label :salesprice %><br>
+    <%= f.text_field :salesprice %>
+  </div>
+  <div class="field">
+    <%= f.label :as_is_val %><br>
+    <%= f.text_field :as_is_val %>
+  </div>
+  <div class="field">
+    <%= f.label :arv %><br>
+    <%= f.text_field :arv %>
+  </div>
+  <div class="field">
+    <%= f.label :ltc %><br>
+    <%= f.text_field :ltc %>
+  </div>
+  <div class="field">
+    <%= f.label :ltv_as %><br>
+    <%= f.text_field :ltv_as %>
+  </div>
+  <div class="field">
+    <%= f.label :ltv_eff %><br>
+    <%= f.text_field :ltv_eff %>
+  </div>
+  <div class="field">
+    <%= f.label :purch_date %><br>
+    <%= f.date_select :purch_date %>
+  </div>
+  <div class="field">
+    <%= f.label :verif_improv %><br>
+    <%= f.text_field :verif_improv %>
+  </div>
+  <div class="field">
+    <%= f.label :payoff %><br>
+    <%= f.text_field :payoff %>
+  </div>
+  <div class="field">
+    <%= f.label :lender_name %><br>
+    <%= f.text_field :lender_name %>
+  </div>
+  <div class="field">
+    <%= f.label :purch_price %><br>
+    <%= f.text_field :purch_price %>
+  </div>
+  <div class="field">
+    <%= f.label :appraised_val %><br>
+    <%= f.text_field :appraised_val %>
+  </div>
+  <div class="field">
+    <%= f.label :borrower %><br>
+    <%= f.check_box :borrower %>
+  </div>
+  <div class="field">
+    <%= f.label :fname %><br>
+    <%= f.text_field :fname %>
+  </div>
+  <div class="field">
+    <%= f.label :lname %><br>
+    <%= f.text_field :lname %>
+  </div>
+  <div class="field">
+    <%= f.label :hemail %><br>
+    <%= f.text_field :hemail %>
+  </div>
+  <div class="field">
+    <%= f.label :hphone %><br>
+    <%= f.text_field :hphone %>
+  </div>
+  <div class="field">
+    <%= f.label :home_add %><br>
+    <%= f.text_field :home_add %>
+  </div>
+  <div class="field">
+    <%= f.label :citizen %><br>
+    <%= f.text_field :citizen %>
+  </div>
+  <div class="field">
+    <%= f.label :credit_score %><br>
+    <%= f.number_field :credit_score %>
+  </div>
+  <div class="field">
+    <%= f.label :bk %><br>
+    <%= f.date_select :bk %>
+  </div>
+  <div class="field">
+    <%= f.label :sixty_days %><br>
+    <%= f.number_field :sixty_days %>
+  </div>
+  <div class="field">
+    <%= f.label :foreclosure %><br>
+    <%= f.check_box :foreclosure %>
+  </div>
+  <div class="field">
+    <%= f.label :last_fc_ss %><br>
+    <%= f.date_select :last_fc_ss %>
+  </div>
+  <div class="field">
+    <%= f.label :entity %><br>
+    <%= f.text_field :entity %>
+  </div>
+  <div class="field">
+    <%= f.label :bizname %><br>
+    <%= f.text_field :bizname %>
+  </div>
+  <div class="field">
+    <%= f.label :bizadd %><br>
+    <%= f.text_field :bizadd %>
+  </div>
+  <div class="field">
+    <%= f.label :bizemail %><br>
+    <%= f.text_field :bizemail %>
+  </div>
+  <div class="field">
+    <%= f.label :bizphone %><br>
+    <%= f.text_field :bizphone %>
+  </div>
+  <div class="field">
+    <%= f.label :purchsixmo %><br>
+    <%= f.number_field :purchsixmo %>
+  </div>
+  <div class="field">
+    <%= f.label :purchtwelvemo %><br>
+    <%= f.number_field :purchtwelvemo %>
+  </div>
+  <div class="field">
+    <%= f.label :purchlife %><br>
+    <%= f.number_field :purchlife %>
+  </div>
+  <div class="field">
+    <%= f.label :avg_price %><br>
+    <%= f.text_field :avg_price %>
+  </div>
+  <div class="field">
+    <%= f.label :dob %><br>
+    <%= f.date_select :dob %>
+  </div>
+  <div class="field">
+    <%= f.label :ssn %><br>
+    <%= f.text_field :ssn %>
+  </div>
+  <div class="field">
+    <%= f.label :ein %><br>
+    <%= f.text_field :ein %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
