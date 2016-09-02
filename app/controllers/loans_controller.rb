@@ -1,5 +1,5 @@
 class LoansController < ApplicationController
-  before_action :set_loan, only: [:show, :edit, :update, :destroy, :step1, :step2, :step3, :step4]
+  before_action :set_loan, only: [:show, :edit, :update, :destroy, :step1, :step2, :step3, :step4, :step5]
 
   # GET /loans
   # GET /loans.json
@@ -46,6 +46,12 @@ class LoansController < ApplicationController
   
   def step4
     @step = "step4"
+    @next_step = "step5"
+    render "new"
+  end 
+  
+  def step5
+    @step = "step5"
     @next_step = ""
     render "new"
   end 
