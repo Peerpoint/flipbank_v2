@@ -3,7 +3,7 @@
 <div class="container">
     <div class="fundingapp1">
         <span class="fa fa-check-square-o"></span><br>
-      <h2>Congrats...You're All Done!</h2> 
+      <h2>Congrats...You're All Done!</h2>
       <p>Please take a moment to quickly review your application</p><br>
     </div>
     <div class="row">
@@ -13,7 +13,7 @@
             <table class="table table-hover">
                 <tr>
                     <td><strong>Loan Type:</strong></td>
-                    <td><%= @loan.trans_type %></td>
+                    <td><%= @loan.trans_type.try(:humanize) %></td>
                 </tr>
                  <tr>
                     <td><strong>Loan Amount Requested:</strong></td>
@@ -201,12 +201,12 @@
                     <td><%= number_to_currency(@loan.avg_price, precision: 0) %></td>
                 </tr>
             </table>
-        </div>        
+        </div>
 </div>
 </div>
             <div id="bottom-wizard">
-                        
-                       
+
+
                          <div class="form-group">
 	                        <%= link_to :Back, "/loans/#{@loan.id}/step3", class: 'btn btn-back' %>
 	                        <%= f.submit :Finish, class:'btn btn-next' %>
@@ -220,7 +220,7 @@
 
 </div><br><br>
 </div>
-        
+
 
 <%= link_to 'Edit', edit_loan_path(@loan) %> |
 <%= link_to 'Back', loans_path %>

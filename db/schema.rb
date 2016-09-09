@@ -11,32 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825020315) do
+ActiveRecord::Schema.define(version: 20160909164347) do
 
   create_table "loans", force: :cascade do |t|
     t.string   "trans_type"
-    t.decimal  "gross_loan"
+    t.decimal  "gross_loan",              default: 0.0
     t.string   "loan_term"
     t.date     "closing_date"
     t.boolean  "rehab"
-    t.decimal  "rehab_funds"
+    t.decimal  "rehab_funds",             default: 0.0
     t.string   "coll_address"
     t.string   "prop_type"
     t.boolean  "occupy"
     t.date     "contract_exp"
-    t.decimal  "seller_con"
-    t.decimal  "salesprice"
-    t.decimal  "as_is_val"
-    t.decimal  "arv"
-    t.decimal  "ltc"
-    t.decimal  "ltv_as"
-    t.decimal  "ltv_eff"
+    t.decimal  "seller_con",              default: 0.0
+    t.decimal  "salesprice",              default: 0.0
+    t.decimal  "as_is_val",               default: 0.0
+    t.decimal  "arv",                     default: 0.0
+    t.decimal  "ltc",                     default: 0.0
+    t.decimal  "ltv_as",                  default: 0.0
+    t.decimal  "ltv_eff",                 default: 0.0
     t.date     "purch_date"
-    t.decimal  "verif_improv"
-    t.decimal  "payoff"
+    t.decimal  "verif_improv",            default: 0.0
+    t.decimal  "payoff",                  default: 0.0
     t.string   "lender_name"
-    t.decimal  "purch_price"
-    t.decimal  "appraised_val"
+    t.decimal  "purch_price",             default: 0.0
+    t.decimal  "appraised_val",           default: 0.0
     t.boolean  "borrower"
     t.string   "fname"
     t.string   "lname"
@@ -57,12 +57,17 @@ ActiveRecord::Schema.define(version: 20160825020315) do
     t.integer  "purchsixmo"
     t.integer  "purchtwelvemo"
     t.integer  "purchlife"
-    t.decimal  "avg_price"
+    t.decimal  "avg_price",               default: 0.0
     t.date     "dob"
     t.string   "ssn"
     t.string   "ein"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.decimal  "total_amount_requested",  default: 0.0
+    t.boolean  "sales_contract"
+    t.decimal  "loan_to_cost_eq",         default: 0.0
+    t.decimal  "loan_to_value_as_is",     default: 0.0
+    t.decimal  "loan_to_value_effective", default: 0.0
   end
 
 end

@@ -16,7 +16,11 @@ class LoansController < ApplicationController
   def new
     @step = "step1"
     @next_step = "step2"
-    @loan = Loan.new
+    if cookies.signed[:loan_id]
+      redirect_to edit_loan_path(cookies.signed[:loan_id])
+    else
+      @loan = Loan.new
+    end
   end
 
   # GET /loans/1/edit
@@ -25,36 +29,37 @@ class LoansController < ApplicationController
     @next_step = "step2"
     render "new"
   end
-  
+
   def step1
     @step = "step1"
     @next_step = "step2"
     render "new"
-  end 
-  
+  end
+
   def step2
     @step = "step2"
     @next_step = "step3"
     render "new"
-  end 
-  
+  end
+
   def step3
     @step = "step3"
     @next_step = "step4"
     render "new"
-  end 
-  
+  end
+
   def step4
     @step = "step4"
     @next_step = "step5"
     render "new"
-  end 
-  
+  end
+
   def step5
     @step = "step5"
     @next_step = ""
+    cookies.signed[:loan_id] = nil
     render "new"
-  end 
+  end
 
   # POST /loans
   # POST /loans.json
@@ -63,6 +68,7 @@ class LoansController < ApplicationController
 
     respond_to do |format|
       if @loan.save
+        set_cookie
         format.html { redirect_to "/loans/#{@loan.id}/step2", notice: 'Loan was successfully submitted.' }
         format.json { render :show, status: :created, location: @loan }
       else
@@ -99,11 +105,20 @@ class LoansController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_loan
-      @loan = Loan.find(params[:id])
+      if cookies.signed[:loan_id] # take back to original loan form which user was filling
+        @loan = Loan.find(cookies.signed[:loan_id])
+      else
+        redirect_to new_loan_path
+      end
+    end
+
+    def set_cookie
+      cookies.signed[:loan_id] = @loan.id
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def loan_params
-      params.require(:loan).permit(:next_step, :trans_type, :gross_loan, :loan_term, :closing_date, :rehab, :rehab_funds, :coll_address, :prop_type, :occupy, :contract_exp, :seller_con, :salesprice, :as_is_val, :arv, :ltc, :ltv_as, :ltv_eff, :purch_date, :verif_improv, :payoff, :lender_name, :purch_price, :appraised_val, :borrower, :fname, :lname, :hemail, :hphone, :home_add, :citizen, :credit_score, :bk, :sixty_days, :foreclosure, :last_fc_ss, :entity, :bizname, :bizadd, :bizemail, :bizphone, :purchsixmo, :purchtwelvemo, :purchlife, :avg_price, :dob, :ssn, :ein)
+      # params.require(:loan).permit(:next_step, :trans_type, :gross_loan, :loan_term, :closing_date, :rehab, :rehab_funds, :coll_address, :prop_type, :occupy, :contract_exp, :seller_con, :salesprice, :as_is_val, :arv, :ltc, :ltv_as, :ltv_eff, :purch_date, :verif_improv, :payoff, :lender_name, :purch_price, :appraised_val, :borrower, :fname, :lname, :hemail, :hphone, :home_add, :citizen, :credit_score, :bk, :sixty_days, :foreclosure, :last_fc_ss, :entity, :bizname, :bizadd, :bizemail, :bizphone, :purchsixmo, :purchtwelvemo, :purchlife, :avg_price, :dob, :ssn, :ein, :sales_contract)
+      params.require(:loan).permit(:next_step, :trans_type, :gross_loan, :loan_term, :closing_date, :rehab, :rehab_funds, :coll_address, :prop_type, :occupy, :contract_exp, :seller_con, :salesprice, :as_is_val, :arv, :ltc, :ltv_as, :ltv_eff, :purch_date, :verif_improv, :payoff, :lender_name, :purch_price, :appraised_val, :borrower, :fname, :lname, :hemail, :hphone, :home_add, :citizen, :credit_score, :bk, :sixty_days, :foreclosure, :last_fc_ss, :entity, :bizname, :bizadd, :bizemail, :bizphone, :purchsixmo, :purchtwelvemo, :purchlife, :avg_price, :dob, :ssn, :ein, :total_amount_requested, :sales_contract, :loan_to_cost_eq, :loan_to_value_as_is, :loan_to_value_effective)
     end
 end
